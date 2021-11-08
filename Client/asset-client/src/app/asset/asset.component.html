@@ -1,0 +1,51 @@
+<div class="container">
+    <form [formGroup]="uploadForm">
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Name</label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="name" placeholder="Your name..">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="lname">Email</label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="email" placeholder="Email..">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="country">Country</label>
+            </div>
+            <div class="col-75">
+                <select formControlName="country">
+                    <option>Select</option>
+                    <option *ngFor='let country of countryList' [value]="country.CountryName">
+                        {{country.CountryName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="subject">Select File</label>
+            </div>
+            <div class="col-75">
+                <input type="file" formControlName="file" (change)="onFilesChanged($event)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="subject">Description</label>
+            </div>
+            <div class="col-75">
+                <textarea formControlName="description" placeholder="Write something.." style="height:200px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn" (click)='saveAsset()' [disabled]="false">{{BtnText}}</button>
+        </div>
+    </form>
+</div>
